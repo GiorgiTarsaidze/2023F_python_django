@@ -20,4 +20,7 @@ def projects_view(request):
 
     ]
     
+
+
+    
     return render(request, 'portfolio/projects.html', {"projects": projects})
