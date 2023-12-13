@@ -7,9 +7,6 @@ def contact_view(request):
     if request.method == "POST":
         return redirect("main_page")
     
-
-
-    
     return render(request, 'contact.html')
 
 def main_view(request):
