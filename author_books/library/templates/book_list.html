@@ -9,8 +9,6 @@
     <h1>Book Library</h1>
     <ul>
         {% for book in books %}
-            <a href="{% url 'book_id' book.id %}"> {{ book.title }}</a>
-            <!-- {% url 'book_detail' book.title %} -->
             <li>{{ book.publication_date }}</li>
             <li>{{ book.author }}</li>
         {% endfor %}

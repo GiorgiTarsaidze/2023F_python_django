@@ -10,3 +10,12 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = "My library"
+        verbose_name_plural = "My library"
+        ordering = ['genre']
+        
+        
+    
+

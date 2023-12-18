@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Book
+from .forms import addBookForm
 
 # Create your views here.
 def index(request):
@@ -12,15 +13,20 @@ def book_detail(request, title):
 
 def add_book(request):
     if request.method == 'POST':
-        new_book = Book(
-            title = request.POST.get('title'),
-            author = request.POST.get('author'),
-            published_year = request.POST.get('published_year'),
-            genre = request.POST.get('genre'),
-        )
-        new_book.save()
-        return redirect('index')
-    return render(request, 'add_book.html')
+        # new_book = Book(
+        #     title = request.POST.get('title'),
+        #     author = request.POST.get('author'),
+        #     published_year = request.POST.get('published_year'),
+        #     genre = request.POST.get('genre'),
+        # )
+        # new_book.save()
+        form = addBookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = addBookForm()
+    return render(request, 'add_book.html', {'form': form})
 
 def edit_book(request, title):
     book = Book.objects.get(title=title)
