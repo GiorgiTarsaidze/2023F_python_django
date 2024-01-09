@@ -10,5 +10,6 @@ router.register(r'blogs', BlogViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    # re_path(r'^auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
